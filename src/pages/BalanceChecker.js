@@ -1,8 +1,6 @@
-// 88tmpLtynUYDeFLc7HqaGP65b1ZpN8gK1PcDEL9Yd3Qz
-import 'dotenv/config';
 import React, { useState } from 'react';
 import { Card, Form, Button, Alert } from 'react-bootstrap';
-import { Connection, PublicKey, clusterApiUrl, LAMPORTS_PER_SOL } from '@solana/web3.js'; // Updated imports
+import { Connection, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
 
 function BalanceChecker({ darkMode }) {
   const [address, setAddress] = useState('');
@@ -19,7 +17,7 @@ function BalanceChecker({ darkMode }) {
 
     try {
       console.log('Connecting to Solana...');
-      const connection = new Connection(`https://rough-smart-reel.solana-mainnet.quiknode.pro/${QUICKNODE_API}/`);
+      const connection = new Connection(`https://rough-smart-reel.solana-mainnet.quiknode.pro/${process.env.REACT_APP_QUICKNODE_API}/`);
       console.log("Slot: ", await connection.getSlot());
 
       const publicKey = new PublicKey(address);
